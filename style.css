@@ -421,20 +421,6 @@ img {
   padding: 0;
 }
 
-.bottle-mockup::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.2) 0%,
-    transparent 70%
-  );
-  animation: shine 3s infinite;
-}
 
 @keyframes shine {
   0%,
