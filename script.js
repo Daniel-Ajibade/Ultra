@@ -453,7 +453,6 @@ function setupFormValidation(form) {
         const addressField = form.querySelector('[name="deliveryAddress"]');
         const stateField = form.querySelector('[name="state"]');
         const quantityField = form.querySelector('[name="quantity"]');
-        const deliveryField = form.querySelector('input[name="delivery"]:checked');
 
         let errors = [];
 
@@ -464,7 +463,6 @@ function setupFormValidation(form) {
         if (!addressField.value.trim()) errors.push('Please enter your delivery address');
         if (!stateField.value) errors.push('Please select your state');
         if (!quantityField.value) errors.push('Please select a package');
-        if (!deliveryField) errors.push('Please select delivery duration');
 
         // Check if phone numbers match
         if (phoneNumberField.value && phoneConfirmField.value &&
@@ -479,13 +477,12 @@ function setupFormValidation(form) {
         }
 
         if (errors.length > 0) {
-            e.preventDefault();
             alert('Please fix the following errors:\n\n' + errors.join('\n'));
             return false;
         }
 
-        // Success message
-        alert('Thank you! Your order has been submitted successfully. We will contact you within 2 hours to confirm your order and delivery details.');
+        // Redirect to thank you page on success
+        window.location.href = 'thanks.html';
     });
 
     // Real-time phone number matching
