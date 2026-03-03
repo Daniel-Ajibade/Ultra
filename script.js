@@ -447,6 +447,8 @@ function setupFormValidation(form) {
     if (!form) return;
 
     form.addEventListener('submit', function (e) {
+        e.preventDefault(); // ✅ Stop default submission first
+
         const fullNameField = form.querySelector('[name="fullName"]');
         const phoneNumberField = form.querySelector('[name="phoneNumber"]');
         const phoneConfirmField = form.querySelector('[name="phoneNumberConfirm"]');
@@ -472,17 +474,34 @@ function setupFormValidation(form) {
 
         // Validate Nigerian phone number format
         const phoneRegex = /^(\+234|234|0)[789][01]\d{8}$/;
-        if (phoneNumberField.value && !phoneRegex.test(phoneNumberField.value.replace(/\s/g, ''))) {
+        if (phoneNumberField.value &&
+            !phoneRegex.test(phoneNumberField.value.replace(/\s/g, ''))) {
             errors.push('Please enter a valid Nigerian phone number');
         }
 
         if (errors.length > 0) {
             alert('Please fix the following errors:\n\n' + errors.join('\n'));
-            return false;
+            return;
         }
 
-        // Redirect to thank you page on success
-        window.location.href = 'thanks.html';
+        // ✅ Submit to Formspree using fetch
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = 'thanks.html'; // Redirect after success
+                } else {
+                    alert('There was a problem submitting your form. Please try again.');
+                }
+            })
+            .catch(() => {
+                alert('Network error. Please check your connection and try again.');
+            });
     });
 
     // Real-time phone number matching
