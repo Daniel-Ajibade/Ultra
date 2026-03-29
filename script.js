@@ -84,29 +84,29 @@ document.addEventListener('DOMContentLoaded', function () {
         // Show notification with slide-in animation
         orderNotification.classList.add('show');
 
-        // Hide notification after 5 seconds
+        // Hide notification after 3 seconds
         setTimeout(function () {
             orderNotification.classList.remove('show');
-        }, 5000);
+        }, 3000);
     }
 
     // Show first notification after 15 seconds
     setTimeout(showNotification, 15000);
 
-    // Then show notification every 15 seconds
-    setInterval(showNotification, 15000);
+    // Then show notification every 20 seconds
+    setInterval(showNotification, 20000);
 
 
 
-    const discountToast = document.getElementById('discountToast');
+    // const discountToast = document.getElementById('discountToast');
 
-    setTimeout(() => {
-        discountToast.style.display = 'block';
+    // setTimeout(() => {
+    //     discountToast.style.display = 'block';
 
-        setTimeout(() => {
-            discountToast.style.display = 'none';
-        }, 5000); // disappears after 5 seconds
-    }, 5000); // appears after 5 seconds
+    //     setTimeout(() => {
+    //         discountToast.style.display = 'none';
+    //     }, 5000); // disappears after 5 seconds
+    // }, 5000); // appears after 5 seconds
 
 
     // Function to hide modal
