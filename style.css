@@ -207,7 +207,7 @@ body {
   left: auto;
   top: 80px;
   background: var(--white);
-  padding: var(--spacing-md);
+  /* padding: var(--spacing-md); */
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   z-index: 997;
@@ -256,7 +256,7 @@ body {
   .order-notification {
     top: 60px;
     right: 10px;
-    max-width: 280px;
+    /* max-width: 280px; */
     font-size: 0.85rem;
   }
 }
@@ -979,7 +979,7 @@ img {
 
 .popular-badge {
   position: absolute;
-  top: -15px;
+  top: -30px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--accent-gold);

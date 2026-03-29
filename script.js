@@ -145,29 +145,34 @@ document.addEventListener('DOMContentLoaded', function () {
     //     modalCTA.addEventListener('click', hideModal);
     // }
 
-    // // ============================================
-    // // COUNTDOWN TIMER (Modal & Pricing Section)
-    // // ============================================
+    // ============================================
+    // COUNTDOWN TIMER (Modal & Pricing Section)
+    // ============================================
 
-    // // Set countdown duration (3-6 hours in seconds)
-    // const countdownDuration = Math.floor(Math.random() * (6 - 3 + 1) + 3) * 3600; // Random 3-6 hours
-    // let countdownSeconds = countdownDuration;
+    document.addEventListener("DOMContentLoaded", function () {
+        const countdownDuration = Math.floor(Math.random() * (6 - 3 + 1) + 3) * 3600;
+        let countdownSeconds = countdownDuration;
 
-    // // Get timer elements
-    // const hoursElement = document.getElementById('hours');
-    // const minutesElement = document.getElementById('minutes');
-    // const secondsElement = document.getElementById('seconds');
+        const hoursStickyElement = document.getElementById('hoursSticky');
+        const minutesStickyElement = document.getElementById('minutesSticky');
+        const secondsStickyElement = document.getElementById('secondsSticky');
 
-    // // Sticky timer elements
-    // const hoursStickyElement = document.getElementById('hoursSticky');
-    // const minutesStickyElement = document.getElementById('minutesSticky');
-    // const secondsStickyElement = document.getElementById('secondsSticky');
+        function updateCountdown() {
+            const hours = Math.floor(countdownSeconds / 3600);
+            const minutes = Math.floor((countdownSeconds % 3600) / 60);
+            const seconds = countdownSeconds % 60;
 
+            hoursStickyElement.textContent = String(hours).padStart(2, '0');
+            minutesStickyElement.textContent = String(minutes).padStart(2, '0');
+            secondsStickyElement.textContent = String(seconds).padStart(2, '0');
 
-    // // Update countdown every second
-    // updateCountdown(); // Initial call
-    // setInterval(updateCountdown, 1000);
+            countdownSeconds--;
+            if (countdownSeconds < 0) countdownSeconds = 0;
+        }
 
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    });
     // ============================================
     // STOCK SCARCITY COUNTER
     // ============================================
